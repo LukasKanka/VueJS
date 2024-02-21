@@ -11,8 +11,14 @@
 
   <body>
     <div id="app">
-      {{ message }}
-      <button @click="changeMessage">Change the message!</button>
+      <p>
+        {{ message }}
+
+        <button @click="changeMessage">Change the message!</button>
+      </p>
+
+      <!-- Vypíše počet sudých čísel v numbers -->
+      {{ evenNumbersCount }}
     </div>
 
     <script>
@@ -20,10 +26,18 @@
         el: "#app",
         data: {
           message: "Hello Vue!",
+          numbers: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
         },
+
         methods: {
           changeMessage() {
             this.message = "Hello World!";
+          },
+        },
+
+        computed: {
+          evenNumbersCount() {
+            return this.numbers.filter((i) => i % 2 === 0).length;
           },
         },
       });
